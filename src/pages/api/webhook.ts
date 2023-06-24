@@ -27,8 +27,8 @@ export default async function handler(req: any, res: any) {
       let webhook_data = req.body;
 
       console.log(webhook_data, "e1");
-      console.log(webhook_data[0].events.nft);
-      console.log(webhook_data[0].events.nft.nfts[0]);
+      //console.log(webhook_data[0].events.nft);
+      //console.log(webhook_data[0].events.nft.nfts[0]);
       let token: any = await getAsset(webhook_data[0].events.nft.nfts[0].mint);
 
       const response = await fetch(webhook, {
@@ -41,7 +41,7 @@ export default async function handler(req: any, res: any) {
           embeds: [
             {
               title: token.content.metadata.name + " listed!",
-              url: `https://solscan.io/token/${webhook_data[0].events.nft.nfts[0].mint}`,
+              url: `https://www.tensor.trade/item/${webhook_data[0].events.nft.nfts[0].mint}`,
               color: 16486972,
               fields: [
                 {
@@ -53,7 +53,7 @@ export default async function handler(req: any, res: any) {
                   value: " ",
                 },
                 {
-                  name: ":moneybag:  Listings Price",
+                  name: ":moneybag:  Listing Price",
                   value:
                     "**" +
                     (webhook_data[0].events.nft.amount / 1000000000).toFixed(
@@ -83,9 +83,7 @@ export default async function handler(req: any, res: any) {
                 {
                   name: "Player points",
                   value:
-                    webhook_data[0].events.nft.seller.slice(0, 4) +
-                    ".." +
-                    webhook_data[0].events.nft.seller.slice(-4),
+                    webhook_data[0].events.nft.
                   inline: true,
                 },
               ],
