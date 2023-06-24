@@ -26,9 +26,6 @@ export default async function handler(req: any, res: any) {
 
       let webhook_data = req.body;
 
-      console.log(webhook_data, "e1");
-      console.log(webhook_data[0].events.nft);
-      console.log(webhook_data[0].events.nft.nfts[0]);
       let token: any = await getAsset(webhook_data[0].events.nft.nfts[0].mint);
 
       let playerPointsObject = token.content.metadata.attributes.find(
@@ -45,7 +42,7 @@ export default async function handler(req: any, res: any) {
 
       console.log(points_per_sol);
 
-      if (points_per_sol <= 10) {
+      if (points_per_sol <= 3) {
         const response = await fetch(webhook, {
           method: "POST",
           headers: {
