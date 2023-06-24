@@ -112,8 +112,8 @@ export default async function handler(req: any, res: any) {
         });
 
         //console.log(response);
-        // console.log(response.headers);
-        // console.log(response.body);
+        console.log(response.headers);
+        console.log(response.body);
       }
       res.status(200).json("success");
     }
