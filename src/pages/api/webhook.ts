@@ -56,12 +56,13 @@ export default async function handler(req: any, res: any) {
               {
                 title: token.content.metadata.name + " listed!",
                 url: `https://www.tensor.trade/item/${webhook_data[0].events.nft.nfts[0].mint}`,
-                // color: 16486972,
-                // fields: [
-                //   {
-                //     name: " ",
-                //     value: " ",
-                //   },
+                color: 16486972,
+                fields: [
+                  {
+                    name: " ",
+                    value: " ",
+                  },
+                ],
                 //   {
                 //     name: " ",
                 //     value: " ",
