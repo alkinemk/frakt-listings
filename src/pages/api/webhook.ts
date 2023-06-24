@@ -107,7 +107,14 @@ export default async function handler(req: any, res: any) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify("test"),
+          body: JSON.stringify({
+            content: null,
+            embeds: [
+              {
+                title: "TEST!",
+              },
+            ],
+          }),
         });
         //console.log(response);
         console.log(response.headers);
