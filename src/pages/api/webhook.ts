@@ -40,10 +40,8 @@ export default async function handler(req: any, res: any) {
 
       const points_per_sol = Number(listing_price) / Number(playerPointsValue);
 
-      console.log("title", token.content.metadata.name);
-      console.log("playerPointsObject", playerPointsObject);
-      console.log("playerPointsValue", playerPointsValue);
       console.log("points_per_sol", points_per_sol);
+      console.log("title", token.content.metadata.name);
 
       if (points_per_sol <= 10) {
         const response = await fetch(webhook, {
@@ -106,9 +104,8 @@ export default async function handler(req: any, res: any) {
           }),
         });
 
-        //console.log(response);
+        console.log(response);
         console.log(response.headers);
-        console.log(response.body);
       }
       res.status(200).json("success");
     }
