@@ -56,50 +56,50 @@ export default async function handler(req: any, res: any) {
               {
                 title: token.content.metadata.name + " listed!",
                 url: `https://www.tensor.trade/item/${webhook_data[0].events.nft.nfts[0].mint}`,
-                color: 16486972,
-                fields: [
-                  {
-                    name: " ",
-                    value: " ",
-                  },
-                  {
-                    name: " ",
-                    value: " ",
-                  },
-                  {
-                    name: ":moneybag:  Listing Price",
-                    value: "**" + listing_price + " " + "SOL**",
-                    inline: true,
-                  },
-                  {
-                    name: ":date:  Listing Date",
-                    value: `<t:${webhook_data[0].timestamp}:R>`,
-                    inline: true,
-                  },
-                  {
-                    name: " ",
-                    value: " ",
-                  },
-                  {
-                    name: "Player points",
-                    value: playerPointsValue,
-                    inline: true,
-                  },
-                  {
-                    name: "SOL per points",
-                    value: points_per_sol,
-                    inline: true,
-                  },
-                ],
+                // color: 16486972,
+                // fields: [
+                //   {
+                //     name: " ",
+                //     value: " ",
+                //   },
+                //   {
+                //     name: " ",
+                //     value: " ",
+                //   },
+                //   {
+                //     name: ":moneybag:  Listing Price",
+                //     value: "**" + listing_price + " " + "SOL**",
+                //     inline: true,
+                //   },
+                //   {
+                //     name: ":date:  Listing Date",
+                //     value: `<t:${webhook_data[0].timestamp}:R>`,
+                //     inline: true,
+                //   },
+                //   {
+                //     name: " ",
+                //     value: " ",
+                //   },
+                //   {
+                //     name: "Player points",
+                //     value: playerPointsValue,
+                //     inline: true,
+                //   },
+                //   {
+                //     name: "SOL per points",
+                //     value: points_per_sol,
+                //     inline: true,
+                //   },
+                // ],
                 // image: {
                 //   url: token.content.files[0].uri,
                 // },
-                timestamp: new Date().toISOString(),
-                footer: {
-                  text: "Helius",
-                  icon_url:
-                    "https://assets-global.website-files.com/641a8c4cac3aee8bd266fd58/642b5b2804ea37191a59737b_favicon-32x32.png",
-                },
+                // timestamp: new Date().toISOString(),
+                // footer: {
+                //   text: "Helius",
+                //   icon_url:
+                //     "https://assets-global.website-files.com/641a8c4cac3aee8bd266fd58/642b5b2804ea37191a59737b_favicon-32x32.png",
+                // },
               },
             ],
           }),
