@@ -33,7 +33,7 @@ export default async function handler(req: any, res: any) {
       let token: any = await getAsset(webhook_data[0].events.nft.nfts[0].mint);
 
       let player_points = token.content.metadata.attributes.filter(
-        (item: any) => item.trait_type == "'player points'"
+        (item: any) => item.trait_type == "player points"
       )[0].value;
 
       console.log(player_points);
