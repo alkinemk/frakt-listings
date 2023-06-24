@@ -36,19 +36,15 @@ export default async function handler(req: any, res: any) {
         (item: any) => item.trait_type === "player points"
       );
 
-      console.log(playerPointsObject);
-
-      //const playerPointsValue = playerPointsObject.value;
+      const playerPointsValue = playerPointsObject.value;
 
       let listing_price = (
         webhook_data[0].events.nft.amount / 1000000000
       ).toFixed(2);
 
-      //let points_per_sol = Number(listing_price) / Number(playerPointsValue);
+      const points_per_sol = Number(listing_price) / Number(playerPointsValue);
 
-      //console.log(points_per_sol);
-
-      console.log(token.content.metadata.attributes);
+      console.log(points_per_sol);
 
       const response = await fetch(webhook, {
         method: "POST",
@@ -95,7 +91,12 @@ export default async function handler(req: any, res: any) {
                 },
                 {
                   name: "Player points",
-                  value: token.content.metadata.attributes,
+                  value: playerPointsObject.value,
+                  inline: true,
+                },
+                {
+                  name: "Points per SOL",
+                  value: points_per_sol,
                   inline: true,
                 },
               ],
