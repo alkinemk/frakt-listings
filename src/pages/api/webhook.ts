@@ -44,7 +44,7 @@ export default async function handler(req: any, res: any) {
       console.log("points_per_sol", points_per_sol);
       console.log(points_per_sol <= 3);
 
-      if (points_per_sol <= 10) {
+      if (points_per_sol <= 15) {
         const response = await fetch(webhook, {
           method: "POST",
           headers: {
@@ -120,7 +120,6 @@ export default async function handler(req: any, res: any) {
         //   }),
         // });
         console.log(response);
-        console.log(response.headers);
       }
       res.status(200).json("success");
     }
