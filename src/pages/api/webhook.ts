@@ -34,7 +34,7 @@ export default async function handler(req: any, res: any) {
 
       let player_points = token.content.metadata.attributes.filter(
         (item: any) => item.trait_type == "player points"
-      )[0].value;
+      );
 
       console.log(player_points);
 
