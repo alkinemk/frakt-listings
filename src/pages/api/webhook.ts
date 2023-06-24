@@ -26,10 +26,9 @@ export default async function handler(req: any, res: any) {
 
       let webhook_data = req.body;
 
-      //console.log(webhook_data, "e1");
-
-      //console.log(webhook_data[0].events.nft);
-      //console.log(webhook_data[0].events.nft.nfts[0]);
+      console.log(webhook_data, "e1");
+      console.log(webhook_data[0].events.nft);
+      console.log(webhook_data[0].events.nft.nfts[0]);
       let token: any = await getAsset(webhook_data[0].events.nft.nfts[0].mint);
 
       let playerPointsObject = token.content.metadata.attributes.find(
@@ -46,75 +45,69 @@ export default async function handler(req: any, res: any) {
 
       console.log(points_per_sol);
 
-      const response = await fetch(webhook, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          content: null,
-          embeds: [
-            {
-              title: token.content.metadata.name + " listed!",
-              url: `https://www.tensor.trade/item/${webhook_data[0].events.nft.nfts[0].mint}`,
-              color: 16486972,
-              fields: [
-                {
-                  name: " ",
-                  value: " ",
+      if (points_per_sol <= 5) {
+        const response = await fetch(webhook, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            content: null,
+            embeds: [
+              {
+                title: token.content.metadata.name + " listed!",
+                url: `https://www.tensor.trade/item/${webhook_data[0].events.nft.nfts[0].mint}`,
+                color: 16486972,
+                fields: [
+                  {
+                    name: " ",
+                    value: " ",
+                  },
+                  {
+                    name: " ",
+                    value: " ",
+                  },
+                  {
+                    name: ":moneybag:  Listing Price",
+                    value: "**" + listing_price + " " + "SOL**",
+                    inline: true,
+                  },
+                  {
+                    name: ":date:  Listing Date",
+                    value: `<t:${webhook_data[0].timestamp}:R>`,
+                    inline: true,
+                  },
+                  {
+                    name: " ",
+                    value: " ",
+                  },
+                  {
+                    name: "Player points",
+                    value: playerPointsObject.value,
+                    inline: true,
+                  },
+                  {
+                    name: "SOL per points",
+                    value: points_per_sol,
+                    inline: true,
+                  },
+                ],
+                image: {
+                  url: token.content.files[0].uri,
                 },
-                {
-                  name: " ",
-                  value: " ",
+                timestamp: new Date().toISOString(),
+                footer: {
+                  text: "Helius",
+                  icon_url:
+                    "https://assets-global.website-files.com/641a8c4cac3aee8bd266fd58/642b5b2804ea37191a59737b_favicon-32x32.png",
                 },
-                {
-                  name: ":moneybag:  Listing Price",
-                  value: "**" + listing_price + " " + "SOL**",
-                  inline: true,
-                },
-                {
-                  name: ":date:  Listing Date",
-                  value: `<t:${webhook_data[0].timestamp}:R>`,
-                  inline: true,
-                },
-                {
-                  name: " ",
-                  value: " ",
-                },
-                {
-                  name: "Seller",
-                  value:
-                    webhook_data[0].events.nft.seller.slice(0, 4) +
-                    ".." +
-                    webhook_data[0].events.nft.seller.slice(-4),
-                  inline: true,
-                },
-                {
-                  name: "Player points",
-                  value: playerPointsObject.value,
-                  inline: true,
-                },
-                {
-                  name: "Points per SOL",
-                  value: points_per_sol,
-                  inline: true,
-                },
-              ],
-              image: {
-                url: token.content.files[0].uri,
               },
-              timestamp: new Date().toISOString(),
-              footer: {
-                text: "Helius",
-                icon_url:
-                  "https://assets-global.website-files.com/641a8c4cac3aee8bd266fd58/642b5b2804ea37191a59737b_favicon-32x32.png",
-              },
-            },
-          ],
-        }),
-      });
-      console.log(response);
-      res.status(200).json("success");
+            ],
+          }),
+        });
+        console.log(response);
+        res.status(200).json("success");
+      }
     }
   } catch (err) {
     console.log(err);
