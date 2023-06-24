@@ -40,15 +40,10 @@ export default async function handler(req: any, res: any) {
 
       const points_per_sol = Number(listing_price) / Number(playerPointsValue);
 
-      console.log(points_per_sol);
       console.log("title", token.content.metadata.name);
-      console.log(
-        "url_tensor",
-        `https://www.tensor.trade/item/${webhook_data[0].events.nft.nfts[0].mint}`
-      );
-      console.log("listing_price", listing_price);
-      console.log("listing_date", webhook_data[0].timestamp);
-      console.log("jpeg_url", token.content.files[0].uri);
+      console.log("playerPointsObject", playerPointsObject);
+      console.log("playerPointsValue", playerPointsValue);
+      console.log("points_per_sol", points_per_sol);
 
       if (points_per_sol <= 10) {
         const response = await fetch(webhook, {
