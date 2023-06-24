@@ -79,6 +79,10 @@ export default async function handler(req: any, res: any) {
                     value: `<t:${webhook_data[0].timestamp}:R>`,
                     inline: true,
                   },
+                  {
+                    name: " ",
+                    value: " ",
+                  },
 
                   {
                     name: "Player points",
