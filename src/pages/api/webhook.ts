@@ -32,7 +32,7 @@ export default async function handler(req: any, res: any) {
       //console.log(webhook_data[0].events.nft.nfts[0]);
       let token: any = await getAsset(webhook_data[0].events.nft.nfts[0].mint);
 
-      let player_points = token.content.metadata.attributes.filter(
+      let player_points = token.content.metadata.attributes.find(
         (item: any) => item.trait_type === "player points"
       )[0].value;
 
@@ -40,7 +40,7 @@ export default async function handler(req: any, res: any) {
         webhook_data[0].events.nft.amount / 1000000000
       ).toFixed(2);
 
-      let points_per_sol = listing_price / player_points;
+      let points_per_sol = Number(listing_price) / player_points;
 
       console.log(points_per_sol);
 
