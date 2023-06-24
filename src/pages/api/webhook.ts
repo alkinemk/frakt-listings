@@ -67,17 +67,18 @@ export default async function handler(req: any, res: any) {
                     name: " ",
                     value: " ",
                   },
+
+                  {
+                    name: ":moneybag:  Listing Price",
+                    value: "**" + listing_price + " " + "SOL**",
+                    inline: true,
+                  },
+                  {
+                    name: ":date:  Listing Date",
+                    value: `<t:${webhook_data[0].timestamp}:R>`,
+                    inline: true,
+                  },
                 ],
-                //   {
-                //     name: ":moneybag:  Listing Price",
-                //     value: "**" + listing_price + " " + "SOL**",
-                //     inline: true,
-                //   },
-                //   {
-                //     name: ":date:  Listing Date",
-                //     value: `<t:${webhook_data[0].timestamp}:R>`,
-                //     inline: true,
-                //   },
                 //   {
                 //     name: " ",
                 //     value: " ",
