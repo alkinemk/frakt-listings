@@ -81,19 +81,15 @@ export default async function handler(req: any, res: any) {
                   },
 
                   {
-                    name: " ",
-                    value: " ",
-                  },
-                  {
                     name: "Player points",
                     value: playerPointsValue,
                     inline: true,
                   },
-                  // {
-                  //   name: "SOL per points",
-                  //   value: points_per_sol,
-                  //   inline: true,
-                  // },
+                  {
+                    name: "SOL per points",
+                    value: points_per_sol as any,
+                    inline: true,
+                  },
                 ],
                 // image: {
                 //   url: token.content.files[0].uri,
