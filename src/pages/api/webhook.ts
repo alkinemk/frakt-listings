@@ -42,8 +42,6 @@ export default async function handler(req: any, res: any) {
 
       console.log("title", token.content.metadata.name);
       console.log("points_per_sol", points_per_sol);
-      console.log(typeof points_per_sol);
-      console.log(typeof playerPointsValue);
 
       if (points_per_sol <= 3) {
         const response = await fetch(webhook, {
