@@ -41,6 +41,7 @@ export default async function handler(req: any, res: any) {
       const points_per_sol = Number(listing_price) / Number(playerPointsValue);
 
       console.log("title", token.content.metadata.name);
+      console.log("points_per_sol", points_per_sol);
       console.log(points_per_sol <= 3);
 
       if (points_per_sol <= 3) {
