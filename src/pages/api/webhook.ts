@@ -129,7 +129,7 @@ export default async function handler(req: any, res: any) {
           }),
         });
         console.log(response);
-      } else if (partner_points_per_sol <= 0.75) {
+      } else if (partner_points_per_sol <= 0.3) {
         const response = await fetch(partner_webhook, {
           method: "POST",
           headers: {
